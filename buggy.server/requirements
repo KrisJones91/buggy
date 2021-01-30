@@ -12,7 +12,7 @@
     [] "BugDetails displays the details of a bug and its Notes",
     [] "Bugs can be closed from the BugDetails view",
     [] "Users can only modify/delete data they created",
-    [] "User is prompted 'are you sure?' when closing a Bug",
+    [] "User is prompt 'are you sure?' when closing a Bug",
     [] "User prompt to remove Note from Bug",
     [] "A Bug can be edited",
     [] "Cannot edit a Bug after it is closed",
