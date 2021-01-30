@@ -7,6 +7,25 @@
         </b>
       </h1>
     </div>
+    <form type="submit" @submit.prevent="createBug">
+      <div class="form-group row justify-content-center">
+        <input type="text"
+               class="form-control"
+               id="title"
+               v-model="state.newBug.title"
+               placeholder="Name of Bug..."
+        >
+        <textarea type="text"
+                  class="form-control"
+                  id="description"
+                  v-model="state.newBug.description"
+                  placeholder="description"
+        />
+        <button type="submit" class="btn btn-outline-dark">
+          Submit
+        </button>
+      </div>
+    </form>
     <div class="row">
       <div class="card">
         <table class="table text-center">
@@ -44,7 +63,8 @@ export default {
   setup() {
     const state = reactive({
       user: computed(() => AppState.user),
-      bugs: computed(() => AppState.bugs)
+      bugs: computed(() => AppState.bugs),
+      newBug: {}
     })
     onMounted(async() => {
       try {
@@ -54,7 +74,15 @@ export default {
       }
     })
     return {
-      state
+      state,
+      async createBug() {
+        try {
+          await bugService.createBug(state.newBug)
+          state.newBug = {}
+        } catch (error) {
+          logger.log(error)
+        }
+      }
     }
   }
 }
