@@ -1,30 +1,20 @@
 <template>
-  <div class="bug-component">
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">
-            Bugs
-          </th>
-          <th scope="col">
-            Reported By
-          </th>
-          <th scope="col">
-            Status
-          </th>
-          <th scope="col">
-            Last Modified
-          </th>
-        </tr>
-      </thead>
+  <div class="bug-component d-flex flex-column ">
+    <table class="table text-center">
       <tbody>
         <tr>
-          <th scope="row">
-            1
-          </th>
-          <td>{{ props.bugProp.title }}</td>
-          <td>{{ state.user }}</td>
-          <td>@mdo</td>
+          <td scope="col" class="title">
+            {{ bugProp.title }}
+          </td>
+          <td scope="col" class="nickname">
+            {{ user.nickname }}
+          </td>
+          <td scope="col" class="closed">
+            {{ bugProp.closed }}
+          </td>
+          <td scope="col" class="updated">
+            {{ bugProp.updatedAt }}
+          </td>
         </tr>
       </tbody>
     </table>
@@ -32,21 +22,33 @@
 </template>
 
 <script>
-import { computed, reactive } from 'vue'
+import { computed } from 'vue'
 import { AppState } from '../AppState'
-
 export default {
   name: 'BugComponent',
-  props: { bugProp: { type: Object, required: true } },
-
+  props: {
+    bugProp: { type: Object, required: true }
+  },
   setup(props) {
-    const state = reactive({
-      user: computed(() => AppState.user),
-      bugs: computed(() => AppState.bugs)
-    })
     return {
-      state
+      user: computed(() => AppState.user)
     }
   }
 }
 </script>
+
+<style scoped>
+.title{
+  min-width: 153px;
+}
+.nickname{
+  min-width: 220px;
+}
+.closed{
+  min-width: 178px;
+}
+.updated{
+  min-width: 317px;
+}
+
+</style>
