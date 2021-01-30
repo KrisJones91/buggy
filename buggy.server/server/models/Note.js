@@ -6,7 +6,7 @@ const Note = new Schema({
   creatorId: { type: String, required: true },
   bugId: { type: String, ref: 'Bug', required: true }
 },
-{ timestamps: true, _id: false, toJSON: { virtuals: true } }
+{ timestamps: true, toJSON: { virtuals: true } }
 )
 
 Note.virtual('bug', {
