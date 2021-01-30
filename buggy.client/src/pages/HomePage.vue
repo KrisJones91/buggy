@@ -1,25 +1,37 @@
 <template>
   <div class="home flex-grow-1 d-flex flex-column align-items-center justify-content-center">
-    <img src="https://bcw.blob.core.windows.net/public/img/8600856373152463" alt="CodeWorks Logo">
-    <h1 class="my-5 bg-dark text-light p-3 rounded d-flex align-items-center">
-      <span class="mx-2 text-white">Vue 3 Starter</span>
-    </h1>
+    <h1> Buggy</h1>
+    <BugComponent v-for="bug in state.bugs" :key="bug.id" :bug-prop="bug" />
   </div>
 </template>
 
 <script>
+import { computed, onMounted, reactive } from 'vue'
+import { AppState } from '../AppState'
+import { logger } from '../utils/Logger'
+import { bugService } from '../services/BugService'
+
 export default {
-  name: 'Home'
+  name: 'Home',
+  setup() {
+    const state = reactive({
+      user: computed(() => AppState.user),
+      bugs: computed(() => AppState.bugs)
+    })
+    onMounted(async() => {
+      try {
+        await bugService.getBugs()
+      } catch (error) {
+        logger.log(error)
+      }
+    })
+    return {
+      state
+    }
+  }
 }
 </script>
 
 <style scoped lang="scss">
-.home{
-  text-align: center;
-  user-select: none;
-  > img{
-    height: 200px;
-    width: 200px;
-  }
-}
+
 </style>
