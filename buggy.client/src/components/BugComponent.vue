@@ -3,11 +3,13 @@
     <table class="table text-center">
       <tbody>
         <tr>
-          <td scope="col" class="title">
-            {{ bugProp.title }}
-          </td>
+          <router-link class="text-dark link" :to="{name: 'Bug', params: {id: bugProp.id}}">
+            <td scope="col" class="title">
+              {{ bugProp.title }}
+            </td>
+          </router-link>
           <td scope="col" class="nickname">
-            {{ user.nickname }}
+            {{ account.name }}
           </td>
           <td scope="col" class="closed text-success" v-if="bugProp.closed == false">
             {{ bugProp.closed ? 'Closed' : 'Open' }}
@@ -27,6 +29,9 @@
 <script>
 import { computed } from 'vue'
 import { AppState } from '../AppState'
+import { bugService } from '../services/BugService'
+import { logger } from '../utils/Logger'
+
 export default {
   name: 'BugComponent',
   props: {
@@ -34,8 +39,14 @@ export default {
   },
   setup(props) {
     return {
-      user: computed(() => AppState.user)
-
+      account: computed(() => AppState.account),
+      async getOne() {
+        try {
+          await bugService.getOne(props.bugProp.id)
+        } catch (error) {
+          logger.log(error)
+        }
+      }
     }
   }
 }
@@ -53,12 +64,6 @@ export default {
 }
 .updated{
   min-width: 317px;
-}
-.open{
-  color: green;
-}
-.close{
-  color: red;
 }
 
 </style>

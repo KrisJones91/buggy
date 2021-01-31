@@ -102,7 +102,6 @@ export default {
   font-family: 'Hind Guntur', sans-serif;
   font-size: 75px;
   -webkit-text-stroke: 3px rgb(0, 0, 0);
-
   color: rgb(206, 206, 206);
 }
 </style>
