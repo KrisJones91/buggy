@@ -16,10 +16,10 @@
             </h1>
           </div>
           <div class="card-body ">
-            <div class="text-center bord bg-danger text-white" v-if="state.activeBug.closed == true">
+            <div class="text-center bord bg-danger text-white" v-if="state.activeBug.closed == true" @click="deleteBug">
               <h4> {{ state.activeBug.closed ? 'Closed' : 'Open' }} </h4>
             </div>
-            <div class="text-center bord bg-success text-white" v-if="state.activeBug.closed == false">
+            <div class="text-center bord bg-success text-white" v-if="state.activeBug.closed == false" @click="deleteBug">
               <h4> {{ state.activeBug.closed ? 'Closed' : 'Open' }} </h4>
             </div>
             <h3 class="text-center">
@@ -58,7 +58,15 @@ export default {
       }
     })
     return {
-      state
+      state,
+      async deleteBug() {
+        try {
+          await bugService.deleteBug(route.params.id)
+        } catch (error) {
+          logger.log(error)
+        }
+      }
+
     }
   }
 }

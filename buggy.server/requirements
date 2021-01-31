@@ -1,4 +1,3 @@
-"requirements":[
     [X] "Navbar to allow navigating back to Home view",
     [X]"Users Can Register, Login, and Logout (this should work out of the box, don't break it)",
     [X] "Bugs display last modified date",
@@ -7,10 +6,10 @@
     [X] "Creating a new bug automatically navigates to the BugDetails view",
     [X] "At least 2 supported front end routes",
     [X] "Styling Indication on main page that bug is closed (color, strike-through, etc.)",
+    [X] "BugDetails - Bugs can be closed",
     [] "Bugs can be filtered by their status",
     -[] "BugDetails - displays the details of a bug and its Notes",
     -[] "BugDetails - NOTES can be added and removed from a bug",
-    -[] "BugDetails - Bugs can be closed",
     -[] "Users can only modify/delete data they created",
     -[] "User is PROMPT 'are you sure?' when closing a Bug",
     -[] "User PROMPT to remove Note from Bug",

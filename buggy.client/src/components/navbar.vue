@@ -122,6 +122,6 @@ a:hover {
   text-transform: uppercase;
 }
 .nav-item .nav-link.router-link-exact-active{
-  color: var(--primary);
+  color: rgba(197, 168, 0, 0.719);
 }
 </style>
