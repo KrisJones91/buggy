@@ -43,6 +43,7 @@ export class BugController extends BaseController {
 
   async createBug(req, res, next) {
     try {
+      req.body.creatorId = req.userInfo.id
       res.send(await bugService.createBug(req.body))
     } catch (error) {
       next(error)
