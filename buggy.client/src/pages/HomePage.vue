@@ -57,10 +57,12 @@ import { computed, onMounted, reactive } from 'vue'
 import { AppState } from '../AppState'
 import { logger } from '../utils/Logger'
 import { bugService } from '../services/BugService'
+import { useRouter } from 'vue-router'
 
 export default {
   name: 'Home',
   setup() {
+    const router = useRouter()
     const state = reactive({
       user: computed(() => AppState.user),
       bugs: computed(() => AppState.bugs),
@@ -77,8 +79,9 @@ export default {
       state,
       async createBug() {
         try {
-          await bugService.createBug(state.newBug)
+          const id = await bugService.createBug(state.newBug)
           state.newBug = {}
+          router.push({ name: 'Bug', params: { id } })
         } catch (error) {
           logger.log(error)
         }

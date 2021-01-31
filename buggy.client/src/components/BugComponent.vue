@@ -9,8 +9,11 @@
           <td scope="col" class="nickname">
             {{ user.nickname }}
           </td>
-          <td scope="col" class="closed">
-            {{ bugProp.closed }}
+          <td scope="col" class="closed text-success" v-if="bugProp.closed == false">
+            {{ bugProp.closed ? 'Closed' : 'Open' }}
+          </td>
+          <td scope="col" class="closed text-danger" v-if="bugProp.closed == true">
+            {{ bugProp.closed ? 'Closed' : 'Open' }}
           </td>
           <td scope="col" class="updated">
             {{ bugProp.updatedAt }}
@@ -32,6 +35,7 @@ export default {
   setup(props) {
     return {
       user: computed(() => AppState.user)
+
     }
   }
 }
@@ -49,6 +53,12 @@ export default {
 }
 .updated{
   min-width: 317px;
+}
+.open{
+  color: green;
+}
+.close{
+  color: red;
 }
 
 </style>
