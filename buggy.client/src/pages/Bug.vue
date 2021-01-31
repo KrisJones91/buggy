@@ -10,10 +10,24 @@
     <div class="row">
       <div class="col-6 mt-5">
         <div class="card">
-          <div class="card-top text-center">
+          <div class="card-top ab-top text-center">
             <h1>
               {{ state.activeBug.title }}
             </h1>
+          </div>
+          <div class="card-body ">
+            <div class="text-center bord bg-danger text-white" v-if="state.activeBug.closed == true">
+              <h4> {{ state.activeBug.closed ? 'Closed' : 'Open' }} </h4>
+            </div>
+            <div class="text-center bord bg-success text-white" v-if="state.activeBug.closed == false">
+              <h4> {{ state.activeBug.closed ? 'Closed' : 'Open' }} </h4>
+            </div>
+            <h3 class="text-center">
+              Description
+            </h3>
+            <p>
+              {{ state.activeBug.description }}
+            </p>
           </div>
         </div>
       </div>
@@ -53,9 +67,22 @@ export default {
 <style scoped>
 .house{
   color: rgba(209, 179, 7, 0.705);
+
 }
 .house:hover{
   color: rgba(255, 217, 4, 0.815);
   text-shadow: 1px 1px 10px black;
+}
+.ab-top{
+  background-color: black;
+  color: rgba(255, 217, 4, 0.815);
+}
+.bord{
+  border: ridge 5px rgb(124, 123, 123) ;
+
+}
+.bord:hover{
+  box-shadow: 1px 1px 10px rgb(97, 96, 96);
+  cursor: pointer;
 }
 </style>

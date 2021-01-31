@@ -1,6 +1,6 @@
 <template>
   <div class="home flex-grow-1 d-flex flex-column align-items-center justify-content-center">
-    <div class="row">
+    <div class="row mb-2">
       <h1 class="title">
         <b>
           Buggy
@@ -10,18 +10,20 @@
     <form type="submit" @submit.prevent="createBug">
       <div class="form-group row justify-content-center">
         <input type="text"
-               class="form-control"
+               class="form-control m-1"
                id="title"
                v-model="state.newBug.title"
                placeholder="Name of Bug..."
+               required
         >
         <textarea type="text"
-                  class="form-control"
+                  class="form-control m-1"
                   id="description"
                   v-model="state.newBug.description"
                   placeholder="description"
+                  required
         />
-        <button type="submit" class="btn btn-outline-dark">
+        <button type="submit" class="btn btn-outline-dark mt-2">
           Submit
         </button>
       </div>
@@ -41,7 +43,7 @@
                 Status
               </th>
               <th scope="col">
-                Modified Date
+                Last Modified
               </th>
             </tr>
           </thead>
@@ -94,14 +96,32 @@ export default {
 <style scoped >
 .table{
   min-width: 700px;
-   background-color: rgba(209, 179, 7, 0.705);
-   color: rgb(245, 241, 241);
-   text-shadow: -1px 0px 4px rgb(0, 0, 0);
+  background-color: rgba(209, 179, 7, 0.705);
+  color: black;
+  text-shadow: 0px 1px 2px rgb(100, 100, 100);
 }
 .title{
-  font-family: 'Hind Guntur', sans-serif;
+  font-family: 'Orbitron', sans-serif;
   font-size: 75px;
-  -webkit-text-stroke: 3px rgb(0, 0, 0);
-  color: rgb(206, 206, 206);
+  -webkit-text-stroke: 2px rgba(197, 168, 0, 0.719);
+  color: rgb(131, 129, 129);
+  text-shadow: 1px 4px 10px rgb(0, 0, 0);
+}
+input{
+  border: solid black;
+}
+input:hover{
+  box-shadow: 0px 0px 8px black;
+}
+textarea{
+  border: solid black;
+}
+textarea:hover{
+  box-shadow: 0px 0px 8px black;
+}
+.card{
+  border: groove 15px rgb(133, 131, 131);
+  margin-bottom: 50px;
+  overflow-y: scroll;
 }
 </style>
