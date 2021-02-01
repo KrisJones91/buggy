@@ -1,3 +1,4 @@
+
 <template>
   <div class="bug-component d-flex flex-column ">
     <table class="table text-center">
@@ -42,12 +43,14 @@ export default {
       account: computed(() => AppState.account),
       async getOne() {
         try {
+          // eslint-disable-next-line no-console
           console.log(props.bugProp.id)
           await bugService.getOne(props.bugProp.id)
         } catch (error) {
           logger.log(error)
         }
       }
+
     }
   }
 }

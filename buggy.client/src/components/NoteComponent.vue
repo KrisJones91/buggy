@@ -3,12 +3,14 @@
     <div class="card m-1">
       <div class="row">
         <div class="col-4">
-          <p>
+          <p class="mt-2">
             {{ noteProp.body }}
           </p>
         </div>
         <div class="col-4">
-          <p>{{ state.account.name }}</p>
+          <p class="mt-2">
+            {{ state.account.name }}
+          </p>
         </div>
         <div class="col-4">
           <i class="

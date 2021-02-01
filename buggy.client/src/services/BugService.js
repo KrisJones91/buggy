@@ -21,6 +21,12 @@ class BugService {
     logger.log(AppState.activeBug)
   }
 
+  async editBug(id, newTitle) {
+    const eB = { title: newTitle }
+    const res = await api.put('api/bugs/' + id, eB)
+    logger.log(res)
+  }
+
   async deleteBug(id) {
     const res = await api.delete('api/bugs/' + id)
     const bugIndex = AppState.bugs.findIndex(b => b.id === id)

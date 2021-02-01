@@ -10,7 +10,8 @@
     <div class="row">
       <div class="col-6 mt-5">
         <div class="card">
-          <div class="card-top ab-top text-center">
+          <div class="card-top ab-top text-center" :contenteditable="state.editBug" @blur="editBug">
+            <i class="fas fa-pencil-alt m-2 text-info" v-if="state.account.id == state.activeBug.creatorId" @click="state.editBug = !state.editBug"></i>
             <h1>
               {{ state.activeBug.title }}
             </h1>
@@ -95,6 +96,14 @@ export default {
       async deleteBug() {
         try {
           await bugService.deleteBug(route.params.id)
+        } catch (error) {
+          logger.log(error)
+        }
+      },
+      async editBug(event) {
+        try {
+          logger.log('editing')
+          await bugService.editBug(state.activeBug.id, event.target.innerText)
         } catch (error) {
           logger.log(error)
         }

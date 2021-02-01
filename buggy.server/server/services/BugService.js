@@ -17,8 +17,8 @@ class BugService {
     return await dbContext.Bugs.create(body)
   }
 
-  async editBug(id, body) {
-    const updated = await dbContext.Bugs.findOneAndUpdate(id, body, { new: true })
+  async editBug(body) {
+    const updated = await dbContext.Bugs.findOneAndUpdate({ _id: body.id, creatorId: body.creatorId }, body, { new: true })
     if (!updated) {
       throw new BadRequest('invalid id')
     }
