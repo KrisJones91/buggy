@@ -23,10 +23,10 @@
             <div class="text-center bord bg-success text-white" v-if="state.activeBug.closed == false" @click="deleteBug">
               <h4> {{ state.activeBug.closed ? 'Closed' : 'Open' }} </h4>
             </div>
-            <h3 class="text-center">
+            <h3 class="text-center mb-3">
               Description
             </h3>
-            <p>
+            <p class="card text-center">
               {{ state.activeBug.description }}
             </p>
           </div>
@@ -42,7 +42,7 @@
                       placeholder="Leave a note here..."
                       required
             />
-            <button type="submit" class="btn btn-outline-dark m-2">
+            <button type="submit" class="btn btn-outline-dark mt-2">
               Sumbit
             </button>
           </div>
@@ -96,6 +96,7 @@ export default {
       async deleteBug() {
         try {
           await bugService.deleteBug(route.params.id)
+          window.confirm('Are you sure you?')
         } catch (error) {
           logger.log(error)
         }

@@ -12,19 +12,8 @@
             {{ state.account.name }}
           </p>
         </div>
-        <div class="col-4">
-          <i class="
-               fas
-               fa-pencil-alt
-               m-2
-               text-info"
-             v-if="state.account.id == noteProp.creatorId"
-          >
-          </i>
-          <i class="fas
-        fa-trash
-        m-2
-        text-danger"
+        <div class="col-4 text-right">
+          <i class="fab fa-xing m-2 text-danger fa-2x"
              v-if="state.account.id == noteProp.creatorId"
              @click="deleteNote()"
           ></i>
@@ -53,6 +42,7 @@ export default {
       async deleteNote() {
         try {
           await noteService.deleteNote(props.noteProp.id)
+          window.confirm('Are you sure you want to DELETE?')
         } catch (error) {
           logger.log(error)
         }
