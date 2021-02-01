@@ -31,6 +31,7 @@
           </div>
         </div>
       </div>
+      <Notes v-for="note in state.notes" :key="note.id" :note-prop="note" />
     </div>
   </div>
 </template>
@@ -39,6 +40,7 @@
 import { computed, onMounted, reactive } from 'vue'
 import { AppState } from '../AppState'
 import { bugService } from '../services/BugService'
+import { noteService } from '../services/NoteService'
 import { useRoute } from 'vue-router'
 import { logger } from '../utils/Logger'
 export default {
@@ -48,11 +50,13 @@ export default {
     const state = reactive({
       account: computed(() => AppState.account),
       activeBug: computed(() => AppState.activeBug),
-      notes: computed(() => AppState.notes)
+      notes: computed(() => AppState.notes),
+      newNote: { bugId: route.params.id }
     })
     onMounted(async() => {
       try {
         await bugService.getOne(route.params.id)
+        await noteService.getNotes(route.params.id)
       } catch (error) {
         logger.log(error)
       }
