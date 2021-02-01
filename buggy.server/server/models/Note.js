@@ -16,4 +16,11 @@ Note.virtual('bug', {
   justOne: true
 })
 
+Note.virtual('creator', {
+  localField: 'creatorId',
+  ref: 'Account',
+  foreignField: '_id',
+  justOne: true
+})
+
 export default Note

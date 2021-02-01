@@ -8,9 +8,9 @@
     [X] "Styling Indication on main page that bug is closed (color, strike-through, etc.)",
     [X] "BugDetails - Bugs can be closed",
     [X] "Bugs cannot be deleted only closed"
-    -[] "BugDetails - displays the details of a bug and its Notes",
-    -[] "BugDetails - NOTES can be added and removed from a bug",
-    -[] "Users can only modify/delete data they created",
+    [X] "BugDetails - displays the details of a bug and its Notes",
+    [X] "Users can only modify/delete data they created",
+    [X] "BugDetails - NOTES can be added and removed from a bug",
     -[] "User is PROMPT 'are you sure?' when closing a Bug",
     -[] "User PROMPT to remove Note from Bug",
     -[] "A Bug can be edited",

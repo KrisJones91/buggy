@@ -3,7 +3,7 @@
     <table class="table text-center">
       <tbody>
         <tr>
-          <router-link class="text-dark link" :to="{name: 'Bug', params: {id: bugProp.id}}">
+          <router-link class="text-dark link" :to="`/bug/${bugProp.id}`">
             <td scope="col" class="title">
               {{ bugProp.title }}
             </td>
@@ -42,6 +42,7 @@ export default {
       account: computed(() => AppState.account),
       async getOne() {
         try {
+          console.log(props.bugProp.id)
           await bugService.getOne(props.bugProp.id)
         } catch (error) {
           logger.log(error)

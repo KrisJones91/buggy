@@ -13,7 +13,7 @@ export class NoteController extends BaseController {
 
   async createNote(req, res, next) {
     try {
-      req.body.authorId = req.userInfo.id
+      req.body.creatorId = req.userInfo.id
       res.send(await noteService.creatNote(req.body))
     } catch (error) {
       next(error)

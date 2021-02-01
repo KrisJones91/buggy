@@ -6,10 +6,10 @@ export class BugController extends BaseController {
   constructor() {
     super('api/bugs')
     this.router
+      .get('/:id/notes', this.getNotes)
+      .get('/:id', this.getOne)
       .use(Auth0Provider.getAuthorizedUserInfo)
       .get('/', this.getAllBugs)
-      .get('/:id', this.getOne)
-      .get('/:id/notes', this.getNotes)
       .post('/', this.createBug)
       .put('/:id', this.editBug)
       .delete('/:id', this.deleteBug)

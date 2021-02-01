@@ -31,6 +31,27 @@
           </div>
         </div>
       </div>
+      <div class="col-5 mt-5 text-center">
+        <form type="submit" @submit.prevent="createNote">
+          <div class="form-group">
+            <textarea type="text"
+                      class="form-control text-center"
+                      id="body"
+                      v-model="state.newNote.body"
+                      placeholder="Leave a note here..."
+                      required
+            />
+            <button type="submit" class="btn btn-outline-dark m-2">
+              Sumbit
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="card m-4 text-center">
+      <div class="card-top">
+        <h1> Notes </h1>
+      </div>
       <Notes v-for="note in state.notes" :key="note.id" :note-prop="note" />
     </div>
   </div>
@@ -63,6 +84,14 @@ export default {
     })
     return {
       state,
+      async createNote() {
+        try {
+          await noteService.createNote(state.newNote)
+          state.newNote = { bugId: route.params.id }
+        } catch (error) {
+          logger.log(error)
+        }
+      },
       async deleteBug() {
         try {
           await bugService.deleteBug(route.params.id)

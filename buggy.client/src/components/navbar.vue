@@ -27,11 +27,6 @@
             Home
           </router-link>
         </li>
-        <li class="nav-item">
-          <router-link :to="{ name: 'Bug' }" class="nav-link">
-            Bug
-          </router-link>
-        </li>
       </ul>
       <span class="navbar-text">
         <button
