@@ -39,10 +39,10 @@
               <th scope="col">
                 Reporter
               </th>
-              <th scope="col">
+              <th>
                 Status
               </th>
-              <th scope="col">
+              <th>
                 Last Modified
               </th>
             </tr>
@@ -60,7 +60,7 @@ import { AppState } from '../AppState'
 import { logger } from '../utils/Logger'
 import { bugService } from '../services/BugService'
 import { useRouter } from 'vue-router'
-
+// computed and add filter bug under NewBug .. some if's
 export default {
   name: 'Home',
   setup() {
@@ -113,11 +113,11 @@ export default {
     animation:blinkingText 2s infinite;
 }
 @keyframes blinkingText{
-    0%{     color: rgb(236, 235, 235)}
-    25%{   color: rgb(131, 129, 129) }
-    50%{    color: rgb(236, 235, 235)}
-    75%{    color:rgb(131, 129, 129)}
-    100%{   color: rgb(236, 235, 235)}
+    0%{color: rgb(236, 235, 235)}
+    25%{color: rgb(131, 129, 129) }
+    50%{color: rgb(236, 235, 235)}
+    75%{color:rgb(131, 129, 129)}
+    100%{color: rgb(236, 235, 235)}
 
 }
 

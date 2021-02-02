@@ -9,8 +9,11 @@
               <b>{{ bugProp.title }}</b>
             </td>
           </router-link>
-          <td scope="col" class="nickname">
-            {{ account.name }}
+          <td scope="col" class="nickname" v-if="bugProp.creator">
+            {{ bugProp.creator.name }}
+          </td>
+          <td v-else>
+            UnknownUser@gmail.com
           </td>
           <td scope="col" class="closed text-success" v-if="bugProp.closed == false">
             {{ bugProp.closed ? 'Closed' : 'Open' }}
