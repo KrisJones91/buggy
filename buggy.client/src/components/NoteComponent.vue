@@ -13,7 +13,7 @@
           </p>
         </div>
         <div class="col-4 text-right">
-          <i class="fab fa-xing m-2 text-danger fa-2x"
+          <i class="fab fa-xing m-2 icon fa-2x"
              v-if="state.account.id == noteProp.creatorId"
              @click="deleteNote()"
           ></i>
@@ -52,3 +52,13 @@ export default {
   }
 }
 </script>
+<style scoped>
+.icon{
+  color: red;
+}
+.icon:hover {
+  color: rgb(146, 3, 3);
+  -webkit-text-stroke: 2px red;
+  transform: rotateX(210deg);
+}
+</style>

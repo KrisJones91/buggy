@@ -23,7 +23,7 @@
                   placeholder="description"
                   required
         />
-        <button type="submit" class="btn btn-outline-dark mt-2">
+        <button type="submit" class="btn sb mt-2">
           Submit
         </button>
       </div>
@@ -94,19 +94,33 @@ export default {
 </script>
 
 <style scoped >
+.home{
+  background-color: rgb(204, 204, 204);
+}
 .table{
   min-width: 700px;
   background-color: rgba(209, 179, 7, 0.705);
   color: black;
-  text-shadow: 0px 1px 2px rgb(100, 100, 100);
+  text-shadow: 0px 2px 3px rgb(100, 100, 100);
+  font-family: 'Montserrat', sans-serif;
 }
 .title{
-  font-family: 'Orbitron', sans-serif;
-  font-size: 75px;
-  -webkit-text-stroke: 2px rgba(197, 168, 0, 0.719);
-  color: rgb(131, 129, 129);
-  text-shadow: 1px 4px 10px rgb(0, 0, 0);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 75px;
+    -webkit-text-stroke: 2px rgba(197, 168, 0, 0.719);
+    color: rgb(131, 129, 129);
+    text-shadow: 0px 3px 8px black;
+    animation:blinkingText 2s infinite;
 }
+@keyframes blinkingText{
+    0%{     color: rgb(236, 235, 235)}
+    25%{   color: rgb(131, 129, 129) }
+    50%{    color: rgb(236, 235, 235)}
+    75%{    color:rgb(131, 129, 129)}
+    100%{   color: rgb(236, 235, 235)}
+
+}
+
 input{
   border: solid black;
 }
@@ -123,5 +137,13 @@ textarea:hover{
   border: groove 15px rgb(133, 131, 131);
   margin-bottom: 50px;
   overflow-y: scroll;
+}
+.sb{
+  border-color: black;
+}
+.sb:hover{
+  background-color: black;
+  color: white;
+  box-shadow: 0px 5px 8px rgb(95, 94, 94);
 }
 </style>

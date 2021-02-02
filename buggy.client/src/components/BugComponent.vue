@@ -4,9 +4,9 @@
     <table class="table text-center">
       <tbody>
         <tr>
-          <router-link class="text-dark link" :to="`/bug/${bugProp.id}`">
+          <router-link class="link" :to="`/bug/${bugProp.id}`">
             <td scope="col" class="title">
-              {{ bugProp.title }}
+              <b>{{ bugProp.title }}</b>
             </td>
           </router-link>
           <td scope="col" class="nickname">
@@ -69,5 +69,11 @@ export default {
 .updated{
   min-width: 317px;
 }
-
+.link{
+  color: black;
+  font-family: 'Prompt', sans-serif;
+}
+.link:hover{
+  color: rgba(209, 179, 7, 0.705);
+}
 </style>

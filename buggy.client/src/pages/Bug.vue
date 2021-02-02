@@ -11,22 +11,22 @@
       <div class="col-6 mt-5">
         <div class="card">
           <div class="card-top ab-top text-center" :contenteditable="state.editBug" @blur="editBug">
-            <i class="fas fa-pencil-alt m-2 text-info" v-if="state.account.id == state.activeBug.creatorId && !state.activeBug.closed" @click="state.editBug = !state.editBug"></i>
-            <h1>
+            <i class="fas fa-pencil-alt m-2 pencil" v-if="state.account.id == state.activeBug.creatorId && !state.activeBug.closed" @click="state.editBug = !state.editBug"></i>
+            <h1 class="bug-title">
               {{ state.activeBug.title }}
             </h1>
           </div>
-          <div class="card-body ">
+          <div class="card-body main">
             <div class="text-center bord bg-danger text-white" v-if="state.activeBug.closed == true" @click="deleteBug">
               <h4> {{ state.activeBug.closed ? 'Closed' : 'Open' }} </h4>
             </div>
             <div class="text-center bord bg-success text-white" v-if="state.activeBug.closed == false" @click="deleteBug">
               <h4> {{ state.activeBug.closed ? 'Closed' : 'Open' }} </h4>
             </div>
-            <h3 class="text-center mb-3">
-              Description
-            </h3>
-            <p class="card text-center">
+            <h4 class="text-center mt-5">
+              What's happening?
+            </h4>
+            <p class="card desc text-center">
               {{ state.activeBug.description }}
             </p>
           </div>
@@ -42,15 +42,15 @@
                       placeholder="Leave a note here..."
                       required
             />
-            <button type="submit" class="btn btn-outline-dark mt-2">
+            <button type="submit" class="btn btn-outline-dark sb mt-2">
               Sumbit
             </button>
           </div>
         </form>
       </div>
     </div>
-    <div class="card m-4 text-center">
-      <div class="card-top">
+    <div class="card m-4 entire text-center">
+      <div class="card-top note-card">
         <h1> Notes </h1>
       </div>
       <Notes v-for="note in state.notes" :key="note.id" :note-prop="note" />
@@ -117,9 +117,11 @@ export default {
 </script>
 
 <style scoped>
+.bug{
+  background-color: rgb(204, 204, 204);
+}
 .house{
   color: rgba(209, 179, 7, 0.705);
-
 }
 .house:hover{
   color: rgba(255, 217, 4, 0.815);
@@ -127,7 +129,14 @@ export default {
 }
 .ab-top{
   background-color: black;
-  color: rgba(255, 217, 4, 0.815);
+  border: inset rgb(165, 164, 164);
+}
+.main{
+  border: inset rgb(165, 164, 164);
+}
+.bug-title{
+  color: rgba(255, 255, 255, 0.815);
+  font-family: 'Rubik', sans-serif !important;
 }
 .bord{
   border: ridge 5px rgb(124, 123, 123) ;
@@ -136,5 +145,36 @@ export default {
 .bord:hover{
   box-shadow: 1px 1px 10px rgb(97, 96, 96);
   cursor: pointer;
+  transform: scale(1.06);
+}
+.pencil{
+  color: white;
+}
+.pencil:hover{
+  color: rgba(255, 217, 4, 0.815);
+  cursor: pointer;
+  transform: scale(1.6);
+}
+.desc{
+  border: solid 1px gray;
+}
+textarea{
+  border: outset rgb(163, 163, 163);
+}
+.note-card{
+  background-color: black;
+  color: white;
+  font-family: 'Rubik', sans-serif !important;
+}
+.entire{
+  border: outset rgb(163, 163, 163);
+}
+.sb{
+  border-color: black;
+}
+.sb:hover{
+  background-color: black;
+  color: white;
+  box-shadow: 0px 5px 8px rgb(95, 94, 94);
 }
 </style>
