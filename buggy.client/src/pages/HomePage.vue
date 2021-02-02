@@ -39,7 +39,7 @@
               <th scope="col">
                 Reporter
               </th>
-              <th scope="col" @click="filter">
+              <th scope="col">
                 Status
               </th>
               <th scope="col">
@@ -87,9 +87,6 @@ export default {
         } catch (error) {
           logger.log(error)
         }
-      },
-      filter() {
-        state.bugs.filter(status => status.closed)
       }
     }
   }
